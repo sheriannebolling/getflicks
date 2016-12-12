@@ -1,0 +1,11 @@
+<h1>Welcome to Petflix!</h1>
+
+
+<h2>Here is a list of movies:</h2>
+<% if @movies %>
+  <% @movies.each do |movie| %>
+  <ul>
+    <li><%= link_to "#{movie.title}", movie_path(movie) %></li>
+  </ul>
+  <% end %>
+<% end %>
