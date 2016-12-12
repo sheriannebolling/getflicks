@@ -1,24 +1,7 @@
-# README
+Welcome to Petflix!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Created by Greenwich Moms' Movie Club
 
-Things you may want to cover:
+Members: Evan Renaud, Sherianne Bolling, Melanie Gershman, Arshdeep Singh
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Petflix is a rails application that allows users to see movie information. Movies can be listed by genre. Movie details can be viewed when a movie is selected. Users can create accounts and log in to store their favorites, rate, and review movies. Movies have an average rating.
