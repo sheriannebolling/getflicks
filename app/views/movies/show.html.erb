@@ -9,11 +9,12 @@
 </div>
 
 <div class="review-container container">
-  <% if @movie.reviews %>
+  <% if @movie.reviews.any? %>
     <h3>Reviews:</h3>
     <% @movie.reviews.each do |review| %>
       <p> <span>Rating: <%= review.rating %></span> | <%= review.comment %> </p>
     <% end %>
+    <p>Average Rating: <%= @movie.average_rating %></p>
   <% end %>
 
   <% if logged_in? %>
