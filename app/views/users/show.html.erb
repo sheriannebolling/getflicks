@@ -1,0 +1,11 @@
+<div class="container">
+  <h2><%= @user.username %></h2>
+  <% if @user.favorite_movies.any? %>
+    <h3>Favorite movies:</h3>
+    <ul>
+      <% @user.favorite_movies.each do |movie| %>
+        <li><%= link_to "#{movie.title}", movie_path(movie) %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>

@@ -1,22 +1,31 @@
 <div class="container">
-  <h1><%= @movie.title %></h1><br>
-
+  <h2><%= @movie.title %></h2>
   <p>Genre: <%= @movie.genre %></p>
   <p>Plot: <%= @movie.plot %></p>
   <p>Director: <%= @movie.director %></p>
   <p>Cast: <%= @movie.cast %></p>
   <p>Year: <%= @movie.year %></p>
+  <p>Number of favorites: <%= @movie.favorites.count %></p>
 </div>
 
-
-<div class="container">
-  <%= link_to "New Comments", new_movie_review_path(@movie)  %>
-</div>
-
-<div class = "container">
-    <% if @movie.reviews %>
-      <% @movie.reviews.each do |review| %>
-          <p> <span>Rating: <%= review.rating %></span> | <%= review.comment %> </p> 
-        <% end %>
+<div class="review-container container">
+  <% if @movie.reviews %>
+    <h3>Reviews:</h3>
+    <% @movie.reviews.each do |review| %>
+      <p> <span>Rating: <%= review.rating %></span> | <%= review.comment %> </p>
     <% end %>
+  <% end %>
+
+  <% if logged_in? %>
+    <% if current_user.favorite_movies.exists?(@movie) %>
+      <%= link_to 'Unfavorite', favorite_path(@movie.favorites.find_by(user: current_user)), method: :delete %>
+    <% else %>
+      <%= form_for([@movie, @movie.favorites.build]) do |f| %>
+        <p>
+          <%= f.submit "Favorite" %>
+        </p>
+      <% end %>
+    <% end %>
+    <%= link_to "New Review", new_movie_review_path(@movie) %>
+  <% end %>
 </div>
