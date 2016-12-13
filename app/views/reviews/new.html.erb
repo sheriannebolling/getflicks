@@ -1,0 +1,9 @@
+<div class="container">
+  <%= form_for @review, url: movie_reviews_path(@movie) do |f| %>
+    <%= f.label :rating %></br>
+    <%= f.text_field :rating %></br>
+    <%= f.label :comment %></br>
+    <%= f.text_area :comment %>
+    <%= f.submit "Add comment" %>
+  <% end %>
+</div>

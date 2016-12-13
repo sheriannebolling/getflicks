@@ -1,12 +1,20 @@
 <div class="container">
-  <h2>Movie Details</h2>
-  <p>Movie: <%= @movie.title %></p>
+  <h2><%= @movie.title %></h2>
   <p>Genre: <%= @movie.genre %></p>
   <p>Plot: <%= @movie.plot %></p>
   <p>Director: <%= @movie.director %></p>
   <p>Cast: <%= @movie.cast %></p>
   <p>Year: <%= @movie.year %></p>
   <p>Number of favorites: <%= @movie.favorites.count %></p>
+</div>
+
+<div class="review-container container">
+  <% if @movie.reviews %>
+    <h3>Reviews:</h3>
+    <% @movie.reviews.each do |review| %>
+      <p> <span>Rating: <%= review.rating %></span> | <%= review.comment %> </p>
+    <% end %>
+  <% end %>
 
   <% if logged_in? %>
     <% if current_user.favorite_movies.exists?(@movie) %>
@@ -18,5 +26,6 @@
         </p>
       <% end %>
     <% end %>
+    <%= link_to "New Review", new_movie_review_path(@movie) %>
   <% end %>
 </div>
