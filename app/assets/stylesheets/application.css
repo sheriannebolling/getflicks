@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+.paginated-links {
+  text-align: center;
+  margin: auto 0;
+}
+
+html, body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}

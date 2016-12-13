@@ -9,13 +9,13 @@
 
   <% if @movies.any? %>
     <h2>Here is a list of movies:</h2>
-    <div class="collection">
+    <div class="carousel">
     <% @movies.each do |movie| %>
       <ul>
-        <li><%= link_to "#{movie.title}", movie_path(movie), class: "collection-item" %></li>
+        <li><%= link_to image_tag(movie.poster), movie_path(movie), class: "carousel-item" %></li>
       </ul>
     <% end %>
     </div>
   <% end %>
-  <%= will_paginate %>
+  <p class="paginated-links"><%= will_paginate %></p>
 </div>
