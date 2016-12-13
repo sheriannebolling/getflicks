@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :find_movie_for_review
+  before_action :find_movie_for_review, only: [:new, :create]
   before_action :find_review, only: [:edit, :update, :destroy]
   before_action :require_login
 
@@ -8,13 +8,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    
       @review = @movie.reviews.new(review_params)
       @review.user = current_user
       if @review.save
         redirect_to @movie
       else
-        render 'reviews/new'
+        render 'new'
       end
   end
 
@@ -22,8 +21,13 @@ class ReviewsController < ApplicationController
   end
 
   def update
-
+    if @review.update(review_params)
+      redirect_to movie_path(@review.movie)
+    else
+      render 'edit'
+    end
   end
+
 
   def destroy
   end
