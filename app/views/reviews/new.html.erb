@@ -1,9 +1,16 @@
 <div class="container">
+  <h2>New Review</h2>
   <%= form_for @review, url: movie_reviews_path(@movie) do |f| %>
-    <%= f.label :rating %></br>
-    <%= f.text_field :rating %></br>
-    <%= f.label :comment %></br>
-    <%= f.text_area :comment %>
-    <%= f.submit "Add comment" %>
+    <p>
+      <%= f.label :rating %>
+      <%= f.text_field :rating %>
+    </p>
+    <p>
+      <%= f.label :comment %>
+      <%= f.text_area :comment %>
+    </p>
+    <p>
+      <%= f.submit "Add review" %>
+    </p>
   <% end %>
 </div>
