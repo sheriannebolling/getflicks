@@ -1,8 +1,22 @@
-<h1>Movie Details</h1><br>
+<div class="container">
+  <h1><%= @movie.title %></h1><br>
 
-<h2>Movie: <%= @movie.title %></h2>
-<h2>Genre: <%= @movie.genre %></h2>
-<h2>Plot: <%= @movie.plot %></h2>
-<h2>Director: <%= @movie.director %></h2>
-<h2>Cast: <%= @movie.cast %></h2>
-<h2>Year: <%= @movie.year %></h2>
+  <p>Genre: <%= @movie.genre %></p>
+  <p>Plot: <%= @movie.plot %></p>
+  <p>Director: <%= @movie.director %></p>
+  <p>Cast: <%= @movie.cast %></p>
+  <p>Year: <%= @movie.year %></p>
+</div>
+
+
+<div class="container">
+  <%= link_to "New Comments", new_movie_review_path(@movie)  %>
+</div>
+
+<div class = "container">
+    <% if @movie.reviews %>
+      <% @movie.reviews.each do |review| %>
+          <p> <span>Rating: <%= review.rating %></span> | <%= review.comment %> </p> 
+        <% end %>
+    <% end %>
+</div>

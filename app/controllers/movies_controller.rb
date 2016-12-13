@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
   def index
     # @movies = Movie.all
-    @movies = Movie.where(genre: params[:genre].capitalize).paginate(page: params[:page], per_page: 30)
+    @movies = Movie.where(genre: params[:genre]).paginate(page: params[:page], per_page: 30)
   end
 
   def show
