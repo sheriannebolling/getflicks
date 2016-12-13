@@ -1,8 +1,22 @@
-<h1>Movie Details</h1><br>
+<div class="container">
+  <h2>Movie Details</h2>
+  <p>Movie: <%= @movie.title %></p>
+  <p>Genre: <%= @movie.genre %></p>
+  <p>Plot: <%= @movie.plot %></p>
+  <p>Director: <%= @movie.director %></p>
+  <p>Cast: <%= @movie.cast %></p>
+  <p>Year: <%= @movie.year %></p>
+  <p>Number of favorites: <%= @movie.favorites.count %></p>
 
-<h2>Movie: <%= @movie.title %></h2>
-<h2>Genre: <%= @movie.genre %></h2>
-<h2>Plot: <%= @movie.plot %></h2>
-<h2>Director: <%= @movie.director %></h2>
-<h2>Cast: <%= @movie.cast %></h2>
-<h2>Year: <%= @movie.year %></h2>
+  <% if logged_in? %>
+    <% if current_user.favorite_movies.exists?(@movie) %>
+      <%= link_to 'Unfavorite', favorite_path(@movie.favorites.find_by(user: current_user)), method: :delete %>
+    <% else %>
+      <%= form_for([@movie, @movie.favorites.build]) do |f| %>
+        <p>
+          <%= f.submit "Favorite" %>
+        </p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
