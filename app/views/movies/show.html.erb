@@ -6,6 +6,7 @@
   <p>Director: <%= @movie.director %></p>
   <p>Cast: <%= @movie.cast %></p>
   <p>Year: <%= @movie.year %></p>
+  <p>Number of favorites: <%= @movie.favorites.count %></p>
 
   <% if logged_in? %>
     <% if current_user.favorite_movies.exists?(@movie) %>
