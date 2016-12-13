@@ -1,6 +1,19 @@
 <div class="container">
   <h1>Log In</h1>
 
+  <% if @errors %>
+    <div id="error_explanation">
+      <p>
+        <strong><%= pluralize(@errors.count, "error") %> prohibited you from logging in:</strong>
+      </p>
+      <ul>
+        <% @errors.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_for :session, url: sessions_path do |f| %>
     <p>
     <%= f.label :username %>
