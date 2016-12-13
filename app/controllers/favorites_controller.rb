@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :require_login
+
   def create
     @movie = Movie.find(params[:movie_id])
     favorite = @movie.favorites.new
@@ -10,8 +12,9 @@ class FavoritesController < ApplicationController
   def destroy
     favorite = Favorite.find(params[:id])
     @movie = favorite.movie
-    favorite.destroy
+    if authorized?(favorite)
+      favorite.destroy
+    end
     redirect_to @movie
   end
-
 end

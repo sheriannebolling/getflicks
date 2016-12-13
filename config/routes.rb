@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   resources :sessions
 
   resources :movies do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:new, :create]
     resources :favorites, only: [:create]
   end
 
-  resources :reviews, except: [:create]
+  resources :reviews, except: [:new, :create]
   resources :favorites, except: [:create]
 
   root 'movies#index'
