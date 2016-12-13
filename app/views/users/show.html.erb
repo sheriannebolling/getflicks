@@ -9,3 +9,12 @@
     </ul>
   <% end %>
 </div>
+
+<div class = "container">
+  <h3>Movies Reviewed:</h3>
+  <% if @user.reviews.each do |review| %>
+    <p><%= link_to "#{review.movie.title}", movie_path(review.movie) %></p>
+    <p><span><%= review.rating %> </span> | <%= review.comment %></p>
+    <% end %>
+  <% end %>
+</div>
