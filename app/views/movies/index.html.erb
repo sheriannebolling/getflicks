@@ -7,15 +7,15 @@
     <p class="waves-effect waves-light white-text btn indigo lighten-1"><%= submit_tag("Search") %></p>
   <% end %>
 
-    <% if @movies.any? %>
-      <h2>Here is a list of movies:</h2>
-      <div class="collection">
-      <% @movies.each do |movie| %>
-        <ul>
-          <li><%= link_to "#{movie.title}", movie_path(movie), class: "collection-item" %></li>
-        </ul>
-      <% end %>
-    </div>
+  <% if @movies.any? %>
+    <h2>Here is a list of movies:</h2>
+    <div class="collection">
+    <% @movies.each do |movie| %>
+      <ul>
+        <li><%= link_to "#{movie.title}", movie_path(movie), class: "collection-item" %></li>
+      </ul>
     <% end %>
-    <%=will_paginate%>
+    </div>
+  <% end %>
+  <%= will_paginate %>
 </div>

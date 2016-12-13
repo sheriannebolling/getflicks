@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   validates_presence_of :rating
-  validates_inclusion_of :rating, in: 1..5
+  validates_inclusion_of :rating, in: 1..5, message: "must be a number from 1-5"
   validates_uniqueness_of :user_id, scope: :movie_id
 
   belongs_to :user

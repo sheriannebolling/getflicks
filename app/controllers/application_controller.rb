@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to new_session_path unless logged_in?
   end
+
+  def authorized?(resource)
+    resource.user == current_user
+  end
 end

@@ -1,13 +1,13 @@
 <div class="container">
   <h2>Create an Account</h2>
 
-  <% if @user.errors.any? %>
+  <% if @errors %>
     <div id="error_explanation">
       <h2>
-        <%= pluralize(@user.errors.count, "error") %> prohibited this article from being saved:
+        <%= pluralize(@errors.count, "error") %> prohibited account creation:
       </h2>
       <ul>
-        <% @user.errors.full_messages.each do |msg| %>
+        <% @errors.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>

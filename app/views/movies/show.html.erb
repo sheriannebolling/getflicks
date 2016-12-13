@@ -17,7 +17,11 @@
   <% if @movie.reviews.any? %>
     <h3>Reviews:</h3>
     <% @movie.reviews.each do |review| %>
-      <p> <span>Rating: <%= review.rating %></span> | <%= review.comment %> </p>
+      <p> <span>Rating: <%= review.rating %></span> | <%= review.comment %> | Reviewed by <%= link_to "#{review.user.username}", user_path(review.user) %></p>
+      <% if review.user == current_user %>
+        <%= link_to "Edit Review", edit_review_path(review) %>
+        <%= link_to "Delete Review", review_path(review), method: :delete %>
+      <% end %>
     <% end %>
     <p>Average Rating: <%= @movie.average_rating %></p>
   <% end %>
@@ -32,6 +36,8 @@
         </p>
       <% end %>
     <% end %></br>
-    <%= link_to "New Review", new_movie_review_path(@movie), class: "waves-effect waves-light white-text btn indigo lighten-1" %>
+    <% unless current_user.reviewed_movies.exists?(@movie) %>
+      <%= link_to "New Review", new_movie_review_path(@movie), class: "waves-effect waves-light white-text btn indigo lighten-1" %>
+    <% end %>
   <% end %>
 </div>
