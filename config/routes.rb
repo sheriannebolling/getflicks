@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create]
   end
 
-  resources :favorites, except: [:create] 
+  resources :favorites, except: [:create]
 
   root 'movies#index'
 end
