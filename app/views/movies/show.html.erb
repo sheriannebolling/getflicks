@@ -1,5 +1,10 @@
 <div class="container">
   <h2><%= @movie.title %></h2>
+  <% if @movie.poster != "N/A" %>
+    <div class="">
+      <%= image_tag(@movie.poster)%>
+    </div>
+  <% end %>
   <p>Genre: <%= @movie.genre %></p>
   <p>Plot: <%= @movie.plot %></p>
   <p>Director: <%= @movie.director %></p>
@@ -23,16 +28,16 @@
 
   <% if logged_in? %>
     <% if current_user.favorite_movies.exists?(@movie) %>
-      <%= link_to 'Unfavorite', favorite_path(@movie.favorites.find_by(user: current_user)), method: :delete %>
+      <%= link_to 'Unfavorite', favorite_path(@movie.favorites.find_by(user: current_user)), class: "waves-effect waves-light white-text btn indigo lighten-1", method: :delete %>
     <% else %>
       <%= form_for([@movie, @movie.favorites.build]) do |f| %>
-        <p>
+        <p class="waves-effect waves-light white-text btn indigo lighten-1">
           <%= f.submit "Favorite" %>
         </p>
       <% end %>
-    <% end %>
+    <% end %></br>
     <% unless current_user.reviewed_movies.exists?(@movie) %>
-      <%= link_to "New Review", new_movie_review_path(@movie) %>
+      <%= link_to "New Review", new_movie_review_path(@movie), class: "waves-effect waves-light white-text btn indigo lighten-1" %>
     <% end %>
   <% end %>
 </div>

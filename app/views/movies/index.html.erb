@@ -1,19 +1,21 @@
-<div class="container">
+<div class="container" >
   <h1>Welcome to Petflix!</h1>
   <h2>Search by genre:</h2>
   <%= form_tag("/", method: "get") do %>
     <%= label_tag(:genre, "Search for:") %>
     <%= text_field_tag(:genre) %>
-    <%= submit_tag("Search") %>
+    <p class="waves-effect waves-light white-text btn indigo lighten-1"><%= submit_tag("Search") %></p>
   <% end %>
 
   <% if @movies.any? %>
     <h2>Here is a list of movies:</h2>
+    <div class="collection">
     <% @movies.each do |movie| %>
       <ul>
-        <li><%= link_to "#{movie.title}", movie_path(movie) %></li>
+        <li><%= link_to "#{movie.title}", movie_path(movie), class: "collection-item" %></li>
       </ul>
     <% end %>
-  <% end %><br>
+    </div>
+  <% end %>
   <%= will_paginate %>
 </div>
