@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161212170944) do
     t.string   "director",   null: false
     t.string   "cast",       null: false
     t.string   "plot",       null: false
+    t.string   "poster"
     t.string   "trailer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

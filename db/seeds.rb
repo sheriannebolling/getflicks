@@ -17,7 +17,8 @@ base_id = "0107289"
   request = "http://www.omdbapi.com/?i=tt0#{id.to_s}"
   query = open(request).read
   response = JSON.parse(query)
+  p response
   unless response["Response"] == "False"
-    Movie.create(genre: response["Genre"].split(", ").first, title: response["Title"], year: response["Year"], director: response["Director"], cast: response["Actors"], plot: response["Plot"])
+    Movie.create(genre: response["Genre"].split(", ").first, title: response["Title"], year: response["Year"], director: response["Director"], cast: response["Actors"], plot: response["Plot"], poster: response["Poster"])
   end
 end

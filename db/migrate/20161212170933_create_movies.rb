@@ -7,6 +7,7 @@ class CreateMovies < ActiveRecord::Migration[5.0]
       t.string :director, null: false
       t.string :cast, null: false
       t.string :plot, null: false
+      t.string :poster
       t.string :trailer
 
       t.timestamps
