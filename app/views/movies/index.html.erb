@@ -2,7 +2,7 @@
   <h1>Welcome to Getflicks!</h1>
   <h2>Search by genre:</h2>
   <%= form_tag("/", method: "get") do %>
-    <%= label_tag(:genre, "Search for:") %>
+    <%= label_tag(:genre, "Please capitalize the first letter of genre to search:") %>
     <%= text_field_tag(:genre) %>
     <p class="waves-effect waves-light white-text btn indigo lighten-1"><%= submit_tag("Search") %></p>
   <% end %>
