@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Petflix</title>
+    <title>Getflix</title>
     <%= csrf_meta_tags %>
 
     <!-- Compiled and minified CSS -->
@@ -16,7 +16,7 @@
   <body>
     <nav>
       <div class="nav-wrapper indigo lighten-1">
-        <a href="/" class="brand-logo">Petflix</a>
+        <a href="/" class="brand-logo">Getflix</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <% if logged_in? %>
             <li><%= link_to "#{current_user.username}", user_path(current_user) %></li>
@@ -37,13 +37,13 @@
         <div class="row">
           <div class="col l6 s12">
             <h5 class="white-text"></h5>
-            <p class="grey-text text-lighten-4">An IMDB clone by Arshdeep Singh, Evan Renaud, Melanie Gershman, and Sherianne Bolling.</p>
+            <p class="grey-text text-lighten-4">An IMDB clone coded at Dev Bootcamp.</p>
           </div>
         </div>
       </div>
       <div class="footer-copyright">
         <div class="container">
-          © 2016 Coded by Greenwich Moms' Movie Club
+          © 2016 Coded by Arshdeep Singh, Evan Renaud, Melanie Gershman, and Sherianne Bolling
         </div>
       </div>
     </footer>
